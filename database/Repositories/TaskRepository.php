@@ -1,13 +1,12 @@
 <?php
 
-use Contracts\BaseRepository;
 use Contracts\TaskRepositoryInterface;
 
 class TaskRepository extends BaseRepository implements TaskRepositoryInterface
 {
 
-    public function model()
+    public function model(): string
     {
-        // TODO: Implement model() method.
+        return \App\Models\Task::class;
     }
 }

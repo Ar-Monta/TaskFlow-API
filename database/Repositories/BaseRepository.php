@@ -1,13 +1,11 @@
 <?php
 
-namespace Contracts;
 
-use BaseRepositoryInterface;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
-abstract class BaseRepository implements BaseRepositoryInterface
+abstract class BaseRepository implements \Contracts\BaseRepositoryInterface
 {
     /**
      * @var $model
@@ -29,9 +27,9 @@ abstract class BaseRepository implements BaseRepositoryInterface
     /**
      * Specify Model class name.
      *
-     * @return mixed
+     * @return string
      */
-    abstract public function model();
+    abstract public function model(): string;
 
     /**
      * @return Model

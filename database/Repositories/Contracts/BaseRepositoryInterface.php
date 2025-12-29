@@ -1,5 +1,7 @@
 <?php
 
+namespace Contracts;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
@@ -25,7 +27,7 @@ interface BaseRepositoryInterface
     /**
      * Get results ORM instance by ids.
      *
-     * @param  array  $ids
+     * @param array $ids
      * @return array|null
      */
     public function getByIds(array $ids);
@@ -33,7 +35,7 @@ interface BaseRepositoryInterface
     /**
      * Create a new row via ORM.
      *
-     * @param  array  $attributes
+     * @param array $attributes
      * @return array
      */
     public function create(array $attributes);
@@ -41,7 +43,7 @@ interface BaseRepositoryInterface
     /**
      * Find first result or create new record based on attributes.
      *
-     * @param  array  $attributes
+     * @param array $attributes
      * @return array
      */
     public function firstOrCreate(array $attributes);
@@ -49,8 +51,8 @@ interface BaseRepositoryInterface
     /**
      * Find a row based on $firstBy or if does not exist create new row based on attributes.
      *
-     * @param  array  $firstBy
-     * @param  array  $attributes
+     * @param array $firstBy
+     * @param array $attributes
      * @return array
      */
     public function firstByOrCreateBy(array $firstBy, array $attributes);
@@ -59,7 +61,7 @@ interface BaseRepositoryInterface
      * Update the model in the database by an identifier.
      *
      * @param $id
-     * @param  array  $attributes
+     * @param array $attributes
      * @return bool|int
      */
     public function updateById($id, array $attributes = []);
@@ -76,8 +78,8 @@ interface BaseRepositoryInterface
     /**
      * Update the model in the database by identifiers.
      *
-     * @param  array  $ids
-     * @param  array  $attributes
+     * @param array $ids
+     * @param array $attributes
      * @return bool|int
      */
     public function updateByIds(array $ids, array $attributes = []);
