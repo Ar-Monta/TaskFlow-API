@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTaskRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Traits\ResponseHandleTrait;
@@ -23,20 +24,14 @@ class TaskController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return ResponseAlias::HTTP_NOT_FOUND;
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTaskRequest $request): JsonResponse
     {
-        $this->taskService->createTask([]);
-        return ResponseAlias::HTTP_CREATED;
+        $data = $request->validated();
+
+        $this->taskService->createTask([$data]);
+        return $this->messageResponse('Task created', ResponseAlias::HTTP_CREATED);
     }
 
     /**
@@ -51,14 +46,6 @@ class TaskController extends Controller
         }
 
         return $this->dataResponse('', [], ResponseAlias::HTTP_CREATED);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Task $task)
-    {
-        //
     }
 
     /**

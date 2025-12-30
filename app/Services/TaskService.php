@@ -3,18 +3,21 @@
 namespace App\Services;
 
 use App\Services\Contracts\TaskServiceInterface;
+use Contracts\TaskRepositoryInterface;
+use Illuminate\Database\Eloquent\Model;
 
 class TaskService implements TaskServiceInterface
 {
+    public function __construct(private readonly TaskRepositoryInterface $repository){}
 
-    public function getTaskById(int $taskId)
+    public function getTaskById(int $taskId): Model|array|null
     {
-        // TODO: Implement getTaskById() method.
+        return $this->repository->getById($taskId);
     }
 
-    public function getAllTasks()
+    public function getAllTasks(): array
     {
-        // TODO: Implement getAllTasks() method.
+        return $this->repository->getAll();
     }
 
     public function createTask(array $task)
